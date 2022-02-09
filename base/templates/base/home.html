@@ -2,18 +2,38 @@
 
 {% block content %}
 
-<h1>Home Template<h1>
+    <h1>
+    Home Template
+    <h1>
 
-<div>
-
-    <div>
-        {% for room in rooms %}
+    <h2>
+        <div>
+            <a href="{% url 'create-sheet' %}">Create Character Sheet</a>
+            <p>Rooms</p>
             <div>
-                <h5>{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a><h5>    
+
+                {% for room in rooms %}
+                    <div>
+
+                        <p> <a href="{% url 'room' room.id %}">{{room.name}}</a> </p>
+
+                    <div>
+                {% endfor %}
+
             <div>
-        {% endfor %}
-    <div>
+            <p>Sheets</p>
+            <div>
 
-<div>
+                {% for sheet in sheets %}
+                    <div>
 
-{% endblock %}
+                        <p> <a href="{% url 'sheet' sheet.id %}">{{sheet.name}}</a> </p>
+
+                    <div>
+                {% endfor %}
+
+            <div>
+        <div>
+    </h2>
+
+{% endblock content %}
