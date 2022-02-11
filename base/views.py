@@ -1,11 +1,37 @@
+from multiprocessing import context
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.models import User
 from .models import *
 from .forms import SheetForm
 
 # Create your views here.
 
+def regPage(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
+        try:
+            user = User.objects.get(username = username)
+        except:
+            messages.error(request, 'User does not exit')
 
+    context = {}
+    return render(request, 'base/user_registration.html', context)
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username = username)
+        except:
+            messages.error(request, 'User does not exit')
+
+    context = {}
+    return render(request, 'base/user_registration.html', context)
 
 def home(request):
     rooms = Room.objects.all()
