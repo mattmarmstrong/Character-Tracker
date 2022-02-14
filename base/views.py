@@ -2,36 +2,61 @@ from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as dj_login, logout
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from .forms import SheetForm
 
 # Create your views here.
 
+# the view used by the registration page
 def regPage(request):
+    form = UserCreationForm()
+
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit = False)
+            user.username = user.username.lower()
+            user.save()
+            return redirect('home')
+        else:
+            messages.error(request, 'An error occured during')
 
-        try:
-            user = User.objects.get(username = username)
-        except:
-            messages.error(request, 'User does not exit')
 
-    context = {}
+    context = {'form': form}
     return render(request, 'base/user_registration.html', context)
 
+# the view used by the login page
 def login(request):
+    # when the user attempts to login, check if they are a valid user
     if request.method == 'POST':
-        username = request.POST.get('username')
+        username = request.POST.get('username').lower()
         password = request.POST.get('password')
 
+        # check if the user does exits
         try:
             user = User.objects.get(username = username)
         except:
-            messages.error(request, 'User does not exit')
+            messages.error(request, 'User does not exist')
+
+        # validate the user login information
+        user = authenticate(request, username = username, password = password)
+
+        #if the user is not None, then login the user and redirect
+        # them to the home page
+        if user is not None:
+            dj_login(request, user)
+            return redirect('home')
+        else:
+            messages.error(request, 'Username OR password are not recognized')
 
     context = {}
-    return render(request, 'base/user_registration.html', context)
+    return render(request, 'base/login.html', context)
+
+def logoutUser(request):
+    logout(request)
+    return redirect('home')
 
 def home(request):
     rooms = Room.objects.all()

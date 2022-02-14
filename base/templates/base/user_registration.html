@@ -5,17 +5,13 @@
 
 <div>
 
-    <form>
+    <form method = "POST" action = "">
         
         {% csrf_token %}
 
-        <lable>Username:</label>
-        <input type="text" name = "username" placeholder = "Enter Username">
-        
-        <lable>Password:</label>
-        <input type="password" name = "password" placeholder = "Enter Password">
-
-        <input type = "submit" value = "login">
+        {{form.as_p}}
+       
+        <input type = "submit" value = "register">
 
     </form>
 
