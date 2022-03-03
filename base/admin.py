@@ -6,3 +6,5 @@ from .models import *
 
 admin.site.register(Room)
 admin.site.register(Sheet)
+# admin.site.register(Feature)
+# admin.site.register(Equipment)

@@ -2,10 +2,209 @@
 
 {% block content %}
 
-<h1>{{sheet.name}}</h1>
-<p>{{sheet.lvl}}</p>
-<p>{{sheet.classes}}</p>
-<p>{{sheet.alignment}}</p>
-<p>{{sheet.description}}</p>
+<a href="{% url 'update-sheet' sheet.id %}">Edit</a>
+<a href="{% url 'delete-sheet' sheet.id %}">Delete</a>
+
+<div class="header">
+    <h1>Name: {{sheet.name}}</h1>
+    <p>User: {{sheet.user}}</p>
+    <p>Level: {{sheet.lvl}}</p>
+    <p>Race: {{sheet.race}}</p>
+    <p>Class: {{sheet.classes}}</p>
+    <p>Background: {{sheet.background}}</p>
+    <p>Alignment: {{sheet.alignment}}</p>
+    <p>Exp: {{sheet.exp}}</p>
+    <p>Inspiration: {{sheet.inspiration}}</p>
+    <p>Proficiency: +<span id="proficiency"></span></p>
+</div>
+
+<div class="statistics">
+    <p>STR: {{sheet.str}} (<span id="strMod"></span>) </p>
+    <p>DEX: {{sheet.dex}} (<span id="dexMod"></span>) </p>
+    <p>CON: {{sheet.con}} (<span id="conMod"></span>) </p>
+    <p>WIS: {{sheet.wis}} (<span id="wisMod"></span>) </p>
+    <p>INT: {{sheet.int}} (<span id="intMod"></span>) </p>
+    <p>CHA: {{sheet.cha}} (<span id="chaMod"></span>) </p>
+    <p>Passive Perception: <span id="passivePerception"></span></p>
+</div>
+
+<div class="saving throws">
+    <p>Saving Throws:
+    <div>
+        {% for value in sheet.savThrow.choices %}
+        <div>
+            {% if value in sheet.savThrow %}
+            {{ value }} (proficient):
+            <script>
+                            // utilize hash map to determine if value has proficiency
+                            var obj = new Object();
+                            obj["Str"] = Math.floor((({{sheet.str}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Dex"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Con"] = Math.floor((({{sheet.con}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Wis"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Int"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Cha"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+
+                            document.write(obj["{{value}}"]);
+
+            </script>
+            {% else %}
+            {{ value }}:
+            <script>
+                            // otherwise just modifier value
+                            var obj = new Object();
+                            obj["Str"] = Math.floor((({{sheet.str}} - 10) / 2));
+                            obj["Dex"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                            obj["Con"] = Math.floor((({{sheet.con}} - 10) / 2));
+                            obj["Wis"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                            obj["Int"] = Math.floor((({{sheet.int}} - 10) / 2));
+                            obj["Cha"] = Math.floor((({{sheet.cha}} - 10) / 2));
+
+                            document.write(obj["{{value}}"]);
+
+            </script>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    </p>
+</div>
+
+<div class="battle">
+    <p>Hit Dice: {{sheet.numHitDice}} {{sheet.currentHitDice}}{{sheet.hitDice}}</p>
+    <p>Initiation: {{sheet.initiationRoll}}</p>
+    <p>Speed: {{sheet.speed}}ft</p>
+    <p>HP: Temp {{sheet.tempHp}} Max {{sheet.maxHp}} Current {{sheet.current}} </p>
+    <p>Death Saves: Success {{sheet.deathSuccess}}, Failure {{sheet.deathFail}}</p>
+</div>
+
+<div class="equipment">
+    <p>AC: {{sheet.armourAC}}</p>
+    <p>Money: {{sheet.pp}}pp, {{sheet.gp}}gp, {{sheet.sp}}sp, {{sheet.cp}}cp</p>
+    <p>Equipment: {{sheet.equipment}}</p>
+</div>
+
+<div class="skills">
+    <!--<p>Proficient Skills: {{sheet.skills}}</p>-->
+    <p>Skills:
+    <div>
+        {% for value in sheet.skills.choices %}
+        <div>
+            {% if value in sheet.skills %}
+            {{ value }} (proficient):
+            <script>
+                            // utilize hash map with loop of chosen fields to determine if skill has proficiency
+                            var obj = new Object();
+                            obj["Acrobatics"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Animal Handling"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Arcana"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Athletics"] = Math.floor((({{sheet.str}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["History"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Deception"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Insight"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Intimidation"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Investigation"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Medicine"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Nature"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Perception"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Performance"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Persuasion"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Religion"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Sleight of Hand"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Stealth"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                            obj["Survival"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+
+                            document.write(obj["{{value}}"]);
+
+            </script>
+            {% else %}
+            {{ value }}:
+            <script>
+                            // otherwise just modifier value for the skill
+                            var obj = new Object();
+                            obj["Acrobatics"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                            obj["Animal Handling"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                            obj["Arcana"] = Math.floor((({{sheet.int}} - 10) / 2));
+                            obj["Athletics"] = Math.floor((({{sheet.str}} - 10) / 2));
+                            obj["History"] = Math.floor((({{sheet.int}} - 10) / 2));
+                            obj["Deception"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                            obj["Insight"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                            obj["Intimidation"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                            obj["Investigation"] = Math.floor((({{sheet.int}} - 10) / 2));
+                            obj["Medicine"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                            obj["Nature"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                            obj["Perception"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                            obj["Performance"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                            obj["Persuasion"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                            obj["Religion"] = Math.floor((({{sheet.int}} - 10) / 2));
+                            obj["Sleight of Hand"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                            obj["Stealth"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                            obj["Survival"] = Math.floor((({{sheet.wis}} - 10) / 2));
+
+                            document.write(obj["{{value}}"]);
+
+            </script>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    </p>
+</div>
+
+<div class="languages and other proficiencies">
+    <p>Languages known: {{sheet.language}}</p>
+    <p>Other Proficiencies: {{sheet.proficiencies}}</p>
+</div>
+
+<div class="personality">
+    <p>Traits: {{sheet.personality}}</p>
+    <p>Ideals: {{sheet.ideals}}</p>
+    <p>Bonds: {{sheet.bonds}}</p>
+    <p>Flaws: {{sheet.flaws}}</p>
+</div>
+
+<div class="other">
+    <p>Features: {{sheet.features}}</p>
+    <p>Spells: {{sheet.spells}}</p>
+    <p>{{sheet.notes}}</p>
+</div>
+
+<script>
+
+    // return the dnd 5e modifier value
+    function getModi(stat) {
+        return Math.floor(((stat - 10) / 2));
+    }
+
+    // arrays to hold fields and modifier values
+    fieldArray = [{{sheet.str}}, {{sheet.dex}}, {{sheet.con}}, {{sheet.int}}, {{sheet.wis}}, {{sheet.cha}}];
+    modArray   = [strMod, dexMod, conMod, intMod, wisMod, chaMod];
+
+    // arrays of id names to be used by the html
+    strArray   = ["strMod", "dexMod", "conMod", "intMod", "wisMod", "chaMod"];
+    proArray   = ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'];
+
+    // proficiencies
+    proficiency = Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+    passivePerception = 10 + getModi({{sheet.wis}}) + proficiency;
+
+    // calculate required values for html
+    for (let i = 0; i < 6; i++) {
+        modArray[i] = getModi(fieldArray[i]);
+    }
+
+    // html ids from javaScript
+    document.getElementById("passivePerception").innerHTML = passivePerception;
+    document.getElementById("proficiency").innerHTML = proficiency;
+
+    for (let i = 0; i < 6; i++) {
+        document.getElementById(strArray[i]).innerHTML = modArray[i];
+    }
+
+    for (let i = 0; i < 6; i++) {
+        document.getElementById(proArray[i]).innerHTML = modArray[i] + proficiency;
+    }
+
+</script>
 
 {% endblock content %}
