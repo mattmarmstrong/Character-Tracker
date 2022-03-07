@@ -127,7 +127,7 @@ class Sheet(models.Model):
                      ('Intimidation', 'Intimidation (Cha)'),
                      ('Investigation', 'Investigation (Int)'),
                      ('Medicine', 'Medicine (Wis)'),
-                     ('Nature', 'Nature (Wis)'),
+                     ('Nature', 'Nature (Int)'),
                      ('Perception', 'Perception (Wis)'),
                      ('Performance', 'Performance (Cha)'),
                      ('Persuasion', 'Persuasion (Cha)'),
