@@ -2,10 +2,64 @@
 
 {% block content %}
 
-<h1>{{sheet.name}}</h1>
-<p>{{sheet.lvl}}</p>
-<p>{{sheet.classes}}</p>
-<p>{{sheet.alignment}}</p>
-<p>{{sheet.description}}</p>
+<a href="{% url 'update-sheet' sheet.id %}">Edit</a>
+<a href="{% url 'delete-sheet' sheet.id %}">Delete</a>
+
+<div class="header">
+    <h1>Name: {{sheet.name}}</h1>
+    <p>Level: {{sheet.lvl}}</p>
+    <p>Race: {{sheet.race}}</p>
+    <p>Class: {{sheet.classes}}</p>
+    <p>Background: {{sheet.background}}</p>
+    <p>Alignment: {{sheet.alignment}}</p>
+    <p>Exp: {{sheet.exp}}</p>
+    <p>Inspiration: {{sheet.inspiration}}</p>
+</div>
+
+<div class="statistics">
+    <p>STR: {{sheet.str}}</p>
+    <p>DEX: {{sheet.dex}}</p>
+    <p>CON: {{sheet.con}}</p>
+    <p>WIS: {{sheet.wis}}</p>
+    <p>INT: {{sheet.int}}</p>
+    <p>CHA: {{sheet.cha}}</p>
+</div>
+
+<div class="saving throws">
+    <p>Saving Throws: {{sheet.savThrow}}</p>
+</div>
+
+<div class="battle">
+    <p>Hit Dice: {{sheet.numHitDice}}{{sheet.hitDice}}</p>
+    <p>Initiation: {{sheet.initiationRoll}}</p>
+    <p>Speed: {{sheet.speed}}</p>
+    <p>Max HP: {{sheet.maxHp}}</p>
+    <p>Current HP: {{sheet.current}}</p>
+    <p>Temporary HP: {{sheet.tempHp}}</p>
+    <p>Death Saves: Success {{sheet.deathSuccess}}, Failure {{sheet.deathFail}}</p>
+</div>
+
+<div class="equip">
+    <p>AC: {{sheet.armourAC}}</p>
+    <p>Money: {{sheet.pp}}pp, {{sheet.gp}}gp, {{sheet.sp}}sp, {{sheet.cp}}cp</p>
+</div>
+
+<div class="skills">
+    <p>Proficient Skills: {{sheet.skills}}</p>
+</div>
+
+<div class="languages and other proficiencies">
+    <p>Languages known: {{sheet.languages}}</p>
+    <p>Other Proficiencies: {{sheet.proficiencies}}</p>
+</div>
+
+<div class="personality">
+    <p>Traits: {{sheet.personality}}</p>
+    <p>Ideals: {{sheet.ideals}}</p>
+    <p>Bonds: {{sheet.bonds}}</p>
+    <p>Flaws: {{sheet.flaws}}</p>
+</div>
+
+<p>{{sheet.notes}}</p>
 
 {% endblock content %}
