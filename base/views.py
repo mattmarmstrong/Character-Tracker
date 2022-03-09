@@ -57,6 +57,11 @@ def login(request):
     context = {}
     return render(request, 'base/login.html', context)
 
+def userProfile(request, pk):
+    user = User.objects.get(id = pk)
+    sheets = Sheet.objects.all()
+    context = {'user' : user, 'sheets': sheets}
+    return render(request, 'base/profile.html', context)
 
 def logoutUser(request):
     logout(request)
