@@ -13,4 +13,5 @@ urlpatterns = [
     path('update-sheet/<str:pk>/', views.updateSheet, name="update-sheet"),
     path('delete-sheet/<str:pk>/', views.deleteSheet, name="delete-sheet"),
     path('sheet/<str:pk>/', views.sheet, name="sheet"),
+    path('glossary/', views.glossary, name="glossary"),
 ]

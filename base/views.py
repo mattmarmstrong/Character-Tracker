@@ -69,6 +69,11 @@ def home(request):
     context = {'rooms': rooms, 'sheets': sheets}
     return render(request, 'base/home.html', context)
 
+def glossary(request):
+    room = Room.objects.all()
+    context = {'room': room}
+    return render(request, 'base/glossary.html', context)
+
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
