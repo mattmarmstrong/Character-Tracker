@@ -9,9 +9,10 @@ urlpatterns = [
 
     path('room/<str:pk>/', views.room, name="room"),
 
-    path('create-sheet/', views.createSheet, name="create-sheet"),
-    path('update-sheet/<str:pk>/', views.updateSheet, name="update-sheet"),
-    path('delete-sheet/<str:pk>/', views.deleteSheet, name="delete-sheet"),
+    path('create-sheet/', views.create_sheet, name="create-sheet"),
+    path('update-sheet/<str:pk>/', views.update_sheet, name="update-sheet"),
+    path('delete-sheet/<str:pk>/', views.delete_sheet, name="delete-sheet"),
+
     path('sheet/<str:pk>/', views.sheet, name="sheet"),
     path('glossary/', views.glossary, name="glossary"),
 ]

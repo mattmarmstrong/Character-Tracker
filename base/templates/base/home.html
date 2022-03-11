@@ -6,39 +6,35 @@
     Home Template
     <h1>
 
-    <h2>
-        <div class="test">
+        <div>
             <a href="{% url 'create-sheet' %}">Create Character Sheet</a>
             <div>
 
                 {% for room in rooms %}
-                    <div>
+                <div>
 
-                        <p> <a href="{% url 'room' room.id %}">{{room.name}}</a> </p>
-
-                    <div>
-                {% endfor %}
-
-            <div>
-            <p>Sheets</p>
-            <div>
-
-                {% for sheet in sheets %}
-                    <div>
-
-                        <p> <a href="{% url 'sheet' sheet.id %}">{{sheet.name}}</a> </p>
+                    <p><a href="{% url 'room' room.id %}">{{room.name}}</a></p>
 
                     <div>
-                {% endfor %}
+                        {% endfor %}
 
-            <div>
-        <div>
-    </h2>
+                        <div>
+                            <div>
+                                <a href="{% url 'glossary' %}"> Glossary</a>
+                            </div>
+                            <p>Sheets</p>
+                            <div>
 
-    <div>
-        <a href="{% url 'glossary' %}"> Glossary</a>
-    </div>
+                                {% for sheet in sheets %}
+                                <div>
+                                    {% if request.user == sheet.user or request.user.is_superuser %}
+                                    <p><a href="{% url 'sheet' sheet.id %}">{{sheet.name}}</a></p>
+                                    {% endif %}
+                                    <div>
+                                        {% endfor %}
+
+                                        <div>
+                                            <div>
 
 
-
-{% endblock content %}
+                                                {% endblock content %}
