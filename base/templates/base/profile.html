@@ -1,0 +1,57 @@
+
+{% extends 'main.html' %}
+
+{% block content%}
+{% if request.user == user or request.user.is_superuser%}
+<style>
+    .profile-container {
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+
+    td {
+        width: 25%;
+        text-align: center;
+    }
+
+</style>
+
+<div class = "profile-container">
+
+    <div>
+        <h3>Character Filter:</h3>
+        <hr>
+
+    </div>
+
+    <table text-align = "center">
+        <tr>
+            <th>Name</th>
+            <th>Class</th>
+            <th>Level</th>
+        </tr>
+
+        {% for item in sheets %}
+
+            {% if item.user == user %}
+                <tr>
+                    <td><a href = "{%url 'sheet' item.id %}" class = "row-link">{{item.name}}</a></td>
+                    <td><a href = "{%url 'sheet' item.id %}" tableindex = "-1" class = row-link>{{item.classes}}</a></td>
+                    <td><a href = "{%url 'sheet' item.id %}" tableindex = "-1" class = row-link>{{item.lvl}}</a></td>
+                </tr>
+            {% endif %}
+
+        {% endfor %}
+
+    </table>
+
+</div>
+{% else %}
+<div>
+
+    <p>You don't have permision to view this page.</p>
+    <a href = "{% url 'home' %}">Back home</a>
+
+</div>
+{% endif %}
+{% endblock content %}

@@ -20,7 +20,7 @@ def regPage(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
+            user.username = user.username()
             user.save()
             return redirect('home')
         else:
@@ -34,7 +34,7 @@ def regPage(request):
 def login(request):
     # when the user attempts to login, check if they are a valid user
     if request.method == 'POST':
-        username = request.POST.get('username').lower()
+        username = request.POST.get('username')
         password = request.POST.get('password')
 
         # check if the user does exits
@@ -56,6 +56,13 @@ def login(request):
 
     context = {}
     return render(request, 'base/login.html', context)
+
+
+def userProfile(request, pk):
+    user = User.objects.get(id = pk)
+    sheets = Sheet.objects.all()
+    context = {'user' : user, 'sheets': sheets}
+    return render(request, 'base/profile.html', context)
 
 
 def logoutUser(request):
