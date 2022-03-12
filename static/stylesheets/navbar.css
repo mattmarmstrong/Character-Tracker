@@ -1,0 +1,14 @@
+.header {
+    background-color: #343232;
+
+}
+.logo {
+    position: relative;
+    top: 40px
+}
+.title {
+    font-family: Roboto, sans-serif;
+    font-size: 32px;
+    position: relative;
+    left:120px;
+}
