@@ -20,8 +20,17 @@
 
     <div>
         <h3>Character Filter:</h3>
-        <hr>
+        <form method="GET" action="">
+            <input type="text" name="q" placeholder="Search Sheets..."/>
+            <input type="submit" value="Search">
+        </form>
 
+        <p>Default search filter is by name.</p>
+        <p>To filter by either name, level, class and date created search in the search format: &ltkeyword to filter
+            result&gt;; &ltsearch query&gt</p>
+        <p>To search by date, only use numeric format: date; year-month-day</p>
+
+        <hr>
     </div>
 
     <table text-align = "center">
@@ -29,16 +38,18 @@
             <th>Name</th>
             <th>Class</th>
             <th>Level</th>
+            <th>Date Created</th>
         </tr>
 
-        {% for item in sheets %}
+        {% for sheet in sheets %}
 
-            {% if item.user == user %}
-                <tr>
-                    <td><a href = "{%url 'sheet' item.id %}" class = "row-link">{{item.name}}</a></td>
-                    <td><a href = "{%url 'sheet' item.id %}" tableindex = "-1" class = row-link>{{item.classes}}</a></td>
-                    <td><a href = "{%url 'sheet' item.id %}" tableindex = "-1" class = row-link>{{item.lvl}}</a></td>
-                </tr>
+        {% if request.user == sheet.user or request.user.is_superuser %}
+        <tr>
+            <td><a href="{%url 'sheet' sheet.id %}" class="row-link">{{sheet.name}}</a></td>
+            <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.classes}}</a></td>
+            <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.lvl}}</a></td>
+            <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.created}}</a></td>
+        </tr>
             {% endif %}
 
         {% endfor %}
@@ -49,7 +60,7 @@
 {% else %}
 <div>
 
-    <p>You don't have permision to view this page.</p>
+    <p>You don't have permission to view this page.</p>
     <a href = "{% url 'home' %}">Back home</a>
 
 </div>
