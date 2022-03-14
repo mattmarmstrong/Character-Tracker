@@ -1,19 +1,39 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
-    <h2>
+
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/home.css'%}">
+
         <div>
             <a href="{% url 'create-sheet' %}">Create Character Sheet</a>
             <div>
-                <p>
-                    <a href="{% url 'user-profile' %}">User Character</a>
-                </p>
 
-                <p>
-                    <a href="{% url 'glossary' %}"> Glossary</a>
-                </p>
-            </div>
-        </div>
-    </h2>
+                {% for room in rooms %}
+                <div>
 
-{% endblock content %}
+                    <p><a href="{% url 'room' room.id %}">{{room.name}}</a></p>
+
+                    <div>
+                        {% endfor %}
+
+                        <div>
+                            <div>
+                                <a href="{% url 'glossary' %}"> Glossary</a>
+                            </div>
+                            <p class="sheets"> Sheets </p>
+                            <div class="sheet_links">
+
+                                {% for sheet in sheets %}
+                                <div>
+                                    {% if request.user == sheet.user or request.user.is_superuser %}
+                                    <p><a href="{% url 'sheet' sheet.id %}">{{sheet.name}}</a></p>
+                                    {% endif %}
+                                    <div>
+                                        {% endfor %}
+
+                                        <div>
+                                            <div>
+
+
+                                                {% endblock content %}

@@ -1,13 +1,14 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
-
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/sheet.css'%}">
 <a href="{% url 'update-sheet' sheet.id %}">Edit</a>
 <a href="{% url 'delete-sheet' sheet.id %}">Delete</a>
 <a href="{% url 'glossary' %}">Glossary</a>
 
 <div class="header">
-    <h1>Name: {{sheet.name}}</h1>
+    <h1 class="name">Name: {{sheet.name}}</h1>
     <p>User: {{sheet.user}}</p>
     <p>Level: {{sheet.lvl}}</p>
     <p>Race: {{sheet.race}}</p>
@@ -29,7 +30,7 @@
     <p>Passive Perception: <span id="passive-perception"></span></p>
 </div>
 
-<div class="saving throws">
+<div class="saving_throws">
     <p>Saving Throws:</p>
     <div>
         {% for value in sheet.savThrow.choices %}
@@ -149,7 +150,7 @@
     </div>
 </div>
 
-<div class="languages and other proficiencies">
+<div class="languages_and_other_proficiencies">
     <p>Languages known: {{sheet.language}}</p>
     <p>Other Proficiencies: {{sheet.proficiencies}}</p>
 </div>

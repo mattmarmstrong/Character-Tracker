@@ -1,8 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
-<h1>{{room.name}}<h1>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/room.css'%}">
+<h1>{{room.name}}</h1>
 
     <!-- TODO: Trying to store all recently added sheets to a single room -->
 

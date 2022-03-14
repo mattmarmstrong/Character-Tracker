@@ -1,8 +1,11 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content%}
 
-<div>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/sheet_form.css'%}">
+
+    <div class="all">
     <form method="POST" action="">
         {% csrf_token %}
 

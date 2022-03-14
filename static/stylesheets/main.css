@@ -3,4 +3,11 @@
 body{
     background-color: #808080;
     font-family: Cambria, sans-serif;
+
+    background-image: url("/static/images/main-background.jpg");
+    background-repeat: no-repeat;
+    background-position: top;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
 }
