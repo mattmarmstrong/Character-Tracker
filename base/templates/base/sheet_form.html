@@ -12,7 +12,7 @@
         <div class="header">
             <div class="fieldWrapper">
                 {{ form.name.errors }}
-                <label for="{{ form.name.id_for_label }}"> Name:</label>
+                <label for="{{ form.name.id_for_label }}"> Name*:</label>
                 {{ form.name }}
             </div>
             <div class="fieldWrapper">
@@ -22,7 +22,7 @@
             </div>
             <div class="fieldWrapper">
                 {{ form.race.errors }}
-                <label for="{{ form.name.id_for_label }}"> Race:</label>
+                <label for="{{ form.name.id_for_label }}"> Race*:</label>
                 {{ form.race }}
             </div>
             <div class="fieldWrapper">
@@ -32,7 +32,7 @@
             </div>
             <div class="fieldWrapper">
                 {{ form.background.errors }}
-                <label for="{{ form.name.id_for_label }}"> Background:</label>
+                <label for="{{ form.name.id_for_label }}"> Background*:</label>
                 {{ form.background }}
             </div>
             <div class="fieldWrapper">
@@ -233,6 +233,8 @@
                 {{ form.notes }}
             </div>
         </div>
+
+        <p>Fields denoted with * are required.</p>
 
         <input type="submit" value="Submit"/>
     </form>
