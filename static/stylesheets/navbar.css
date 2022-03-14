@@ -12,3 +12,11 @@
     position: relative;
     left:120px;
 }
+
+a:link {
+    color: antiquewhite;
+}
+
+a:visited {
+    color: antiquewhite;
+}

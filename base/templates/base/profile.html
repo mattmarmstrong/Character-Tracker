@@ -1,7 +1,9 @@
 
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content%}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/profile.css'%}">
 {% if request.user == user or request.user.is_superuser%}
 <style>
     .profile-container {

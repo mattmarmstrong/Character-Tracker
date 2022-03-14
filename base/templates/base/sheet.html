@@ -1,13 +1,14 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
-
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/sheet.css'%}">
 <a href="{% url 'update-sheet' sheet.id %}">Edit</a>
 <a href="{% url 'delete-sheet' sheet.id %}">Delete</a>
 <a href="{% url 'glossary' %}">Glossary</a>
 
 <div class="header">
-    <h1>Name: {{sheet.name}}</h1>
+    <h1 class="name">Name: {{sheet.name}}</h1>
     <p>User: {{sheet.user}}</p>
     <p>Level: {{sheet.lvl}}</p>
     <p>Race: {{sheet.race}}</p>
