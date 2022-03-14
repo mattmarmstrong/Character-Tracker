@@ -22,32 +22,32 @@
             </div>
             <div class="fieldWrapper">
                 {{ form.race.errors }}
-                <label for="{{ form.name.id_for_label }}"> Race*:</label>
+                <label for="{{ form.race.id_for_label }}"> Race*:</label>
                 {{ form.race }}
             </div>
             <div class="fieldWrapper">
                 {{ form.classes.errors }}
-                <label for="{{ form.name.id_for_label }}"> Class:</label>
+                <label for="{{ form.classes.id_for_label }}"> Class:</label>
                 {{ form.classes }}
             </div>
             <div class="fieldWrapper">
                 {{ form.background.errors }}
-                <label for="{{ form.name.id_for_label }}"> Background*:</label>
+                <label for="{{ form.background.id_for_label }}"> Background*:</label>
                 {{ form.background }}
             </div>
             <div class="fieldWrapper">
                 {{ form.alignment.errors }}
-                <label for="{{ form.name.id_for_label }}"> Alignment:</label>
+                <label for="{{ form.alignment.id_for_label }}"> Alignment:</label>
                 {{ form.alignment }}
             </div>
             <div class="fieldWrapper">
                 {{ form.exp.errors }}
-                <label for="{{ form.name.id_for_label }}"> Exp:</label>
+                <label for="{{ form.exp.id_for_label }}"> Exp:</label>
                 {{ form.exp }}
             </div>
             <div class="fieldWrapper">
                 {{ form.inspiration.errors }}
-                <label for="{{ form.name.id_for_label }}"> Inspiration:</label>
+                <label for="{{ form.inspiration.id_for_label }}"> Inspiration:</label>
                 {{ form.inspiration }}
             </div>
         </div>
@@ -60,27 +60,27 @@
             </div>
             <div class="fieldWrapper">
                 {{ form.dex.errors }}
-                <label for="{{ form.str.id_for_label }}"> Dex:</label>
+                <label for="{{ form.dex.id_for_label }}"> Dex:</label>
                 {{ form.dex }}
             </div>
             <div class="fieldWrapper">
                 {{ form.con.errors }}
-                <label for="{{ form.str.id_for_label }}"> Con:</label>
+                <label for="{{ form.con.id_for_label }}"> Con:</label>
                 {{ form.con }}
             </div>
             <div class="fieldWrapper">
                 {{ form.wis.errors }}
-                <label for="{{ form.str.id_for_label }}"> Wis:</label>
+                <label for="{{ form.wis.id_for_label }}"> Wis:</label>
                 {{ form.wis }}
             </div>
             <div class="fieldWrapper">
                 {{ form.int.errors }}
-                <label for="{{ form.str.id_for_label }}"> Int:</label>
+                <label for="{{ form.int.id_for_label }}"> Int:</label>
                 {{ form.int }}
             </div>
             <div class="fieldWrapper">
                 {{ form.cha.errors }}
-                <label for="{{ form.str.id_for_label }}"> Cha:</label>
+                <label for="{{ form.cha.id_for_label }}"> Cha:</label>
                 {{ form.cha }}
             </div>
         </div>
@@ -98,40 +98,40 @@
             <p>Current </p>
             <div class="fieldWrapper">
                 {{ form.numHitDice.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Hit Dice:</label>
-                {{ form.numHitDice }}
                 {{ form.currentHitDice.errors }}
-                {{ form.currentHitDice }}
                 {{ form.hitDice.errors }}
+                <label for="{{ form.numHitDice.id_for_label }}"> Hit Dice:</label>
+                {{ form.numHitDice }}
+                {{ form.currentHitDice }}
                 {{ form.hitDice }}
             </div>
             <div class="fieldWrapper">
                 {{ form.initiationRoll.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Initiation:</label>
+                <label for="{{ form.initiationRoll.id_for_label }}"> Initiation:</label>
                 {{ form.initiationRoll }}
             </div>
             <div class="fieldWrapper">
                 {{ form.speed.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Speed:</label>
+                <label for="{{ form.speed.id_for_label }}"> Speed:</label>
                 {{ form.speed }} ft
             </div>
             <div class="fieldWrapper">
                 <p>Total</p>
                 <p>Current </p>
                 {{ form.maxHp.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> HP:</label>
-                {{ form.maxHp }}
                 {{ form.current.errors }}
-                {{ form.current }}
                 {{ form.tempHp.errors }}
+                <label for="{{ form.maxHp.id_for_label }}"> HP:</label>
+                {{ form.maxHp }}
+                {{ form.current }}
                 {{ form.tempHp }}
             </div>
             <div class="fieldWrapper">
                 <p>Success</p>
                 <p>Failure </p>
-                {{ form.maxHp.errors }}
-                {{ form.current.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Death Saves:</label>
+                {{ form.deathSuccess.errors }}
+                {{ form.deathFail.errors }}
+                <label for="{{ form.deathSuccess.id_for_label }}"> Death Saves:</label>
                 {{ form.deathSuccess }}
                 {{ form.deathFail }}
             </div>
@@ -142,32 +142,32 @@
             <p>Current </p>
             <div class="fieldWrapper">
                 {{ form.armourAC.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> AC:</label>
+                <label for="{{ form.armourAC.id_for_label }}"> AC:</label>
                 {{ form.armourAC }}
             </div>
             <div class="fieldWrapper">
                 {{ form.pp.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> pp:</label>
+                <label for="{{ form.pp.id_for_label }}"> pp:</label>
                 {{ form.pp }}
             </div>
             <div class="fieldWrapper">
                 {{ form.gp.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> gp:</label>
+                <label for="{{ form.gp.id_for_label }}"> gp:</label>
                 {{ form.gp }}
             </div>
             <div class="fieldWrapper">
                 {{ form.sp.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> sp:</label>
+                <label for="{{ form.sp.id_for_label }}"> sp:</label>
                 {{ form.sp }}
             </div>
             <div class="fieldWrapper">
                 {{ form.cp.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> cp:</label>
+                <label for="{{ form.cp.id_for_label }}"> cp:</label>
                 {{ form.cp }}
             </div>
             <div class="fieldWrapper">
                 {{ form.equipment.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Equipment:</label>
+                <label for="{{ form.equipment.id_for_label }}"> Equipment:</label>
                 {{ form.equipment }}
             </div>
         </div>
@@ -175,7 +175,7 @@
         <div class="skills">
             <div class="fieldWrapper">
                 {{ form.skills.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Skills:</label>
+                <label for="{{ form.skills.id_for_label }}"> Skills:</label>
                 {{ form.skills }}
             </div>
         </div>
@@ -183,12 +183,12 @@
         <div class="language and other proficiencies">
             <div class="fieldWrapper">
                 {{ form.language.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Language:</label>
+                <label for="{{ form.language.id_for_label }}"> Language:</label>
                 {{ form.language }}
             </div>
             <div class="fieldWrapper">
                 {{ form.proficiencies.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Proficiencies:</label>
+                <label for="{{ form.proficiencies.id_for_label }}"> Proficiencies:</label>
                 {{ form.proficiencies }}
             </div>
         </div>
@@ -196,22 +196,22 @@
         <div class="personality">
             <div class="fieldWrapper">
                 {{ form.personality.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Traits:</label>
+                <label for="{{ form.personality.id_for_label }}"> Traits:</label>
                 {{ form.personality }}
             </div>
             <div class="fieldWrapper">
                 {{ form.ideals.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Ideals:</label>
+                <label for="{{ form.ideals.id_for_label }}"> Ideals:</label>
                 {{ form.ideals }}
             </div>
             <div class="fieldWrapper">
                 {{ form.bonds.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Bonds:</label>
+                <label for="{{ form.bonds.id_for_label }}"> Bonds:</label>
                 {{ form.bonds }}
             </div>
             <div class="fieldWrapper">
                 {{ form.flaws.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Flaws:</label>
+                <label for="{{ form.flaws.id_for_label }}"> Flaws:</label>
                 {{ form.flaws }}
             </div>
         </div>
@@ -219,17 +219,17 @@
         <div class="other">
             <div class="fieldWrapper">
                 {{ form.features.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Features:</label>
+                <label for="{{ form.features.id_for_label }}"> Features:</label>
                 {{ form.features }}
             </div>
             <div class="fieldWrapper">
                 {{ form.spells.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Spells:</label>
+                <label for="{{ form.spells.id_for_label }}"> Spells:</label>
                 {{ form.spells }}
             </div>
             <div class="fieldWrapper">
                 {{ form.notes.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Notes:</label>
+                <label for="{{ form.notes.id_for_label }}"> Notes:</label>
                 {{ form.notes }}
             </div>
         </div>
