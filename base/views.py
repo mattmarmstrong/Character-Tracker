@@ -1,6 +1,7 @@
 from multiprocessing import context
 
 from django.contrib.auth.decorators import login_required
+from django.core.handlers import exception
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
@@ -8,20 +9,21 @@ from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from .forms import SheetForm
+from django.db.models import Q
 
 
 # Create your views here.
 
 # the view used by the registration page
-def regPage(request):
+def reg_page(request):
     form = UserCreationForm()
 
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username()
             user.save()
+            dj_login(request, user)
             return redirect('home')
         else:
             messages.error(request, 'An error occurred during')
@@ -58,14 +60,27 @@ def login(request):
     return render(request, 'base/login.html', context)
 
 
-def userProfile(request, pk):
-    user = User.objects.get(id = pk)
-    sheets = Sheet.objects.all()
-    context = {'user' : user, 'sheets': sheets}
+def user_profile(request):
+    q = request.GET.get('q') if request.GET.get('q') is not None else ''
+
+    search = q.split(";")
+
+    if "name;" in q:
+        sheets = Sheet.objects.filter(name__icontains=search[1].lstrip())
+    elif "level;" in q:
+        sheets = Sheet.objects.filter(lvl__icontains=search[1].lstrip())
+    elif "class;" in q:
+        sheets = Sheet.objects.filter(classes__icontains=search[1].lstrip())
+    elif "date;" in q:
+        sheets = Sheet.objects.filter(created__icontains=search[1].lstrip())
+    else:
+        sheets = Sheet.objects.filter(name__icontains=q)
+
+    context = {'sheets': sheets}
     return render(request, 'base/profile.html', context)
 
 
-def logoutUser(request):
+def logout_user(request):
     logout(request)
     return redirect('home')
 

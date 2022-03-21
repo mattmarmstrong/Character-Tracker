@@ -60,9 +60,18 @@ class Sheet(models.Model):
     race = models.CharField(max_length=60, null=True)
 
     CLASS_CHOICES = [
-        ('Fighter', 'Fighter'),
         ('Barbarian', 'Barbarian'),
+        ('Bard', 'Bard'),
+        ('Cleric', 'Cleric'),
+        ('Druid', 'Druid'),
+        ('Fighter', 'Fighter'),
+        ('Monk', 'Monk'),
+        ('Paladin', 'Paladin'),
+        ('Ranger', 'Ranger'),
         ('Rogue', 'Rogue'),
+        ('Sorcerer', 'Sorcerer'),
+        ('Warlock', 'Warlock'),
+        ('Wizard', 'Wizard')
     ]
     classes = models.CharField(max_length=20, choices=CLASS_CHOICES, default='Fighter')
 

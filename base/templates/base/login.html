@@ -1,10 +1,14 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
-<div>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/login.css'%}">
 
-    <form method = "POST" action = "">
+    <div class="fields">
+
+
+    <form class="info" method = "POST" action = "">
         {% csrf_token %}
 
         <label>Username:</label>
@@ -13,7 +17,7 @@
         <label>Password:</label>
         <input type="password" name = "password" placeholder = "Enter Password">
 
-        <input type = "submit" value = "login">
+        <input type="Submit" value="Login">
 
     </form>
 

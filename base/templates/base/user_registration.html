@@ -1,9 +1,12 @@
 {% extends 'main.html' %}
+{% load static %}
 
 
 {% block content %}
 
-<div>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/user_registration.css'%}">
+
+    <div class="registration_form">
 
     <form method = "POST" action = "">
         
@@ -11,7 +14,7 @@
 
         {{form.as_p}}
        
-        <input type = "submit" value = "register">
+        <input type="Submit" value="Register">
 
     </form>
 

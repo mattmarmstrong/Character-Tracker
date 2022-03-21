@@ -1,10 +1,9 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
-    <h1>
-    Home Template
-    <h1>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/home.css'%}">
 
         <div>
             <a href="{% url 'create-sheet' %}">Create Character Sheet</a>
@@ -22,8 +21,8 @@
                             <div>
                                 <a href="{% url 'glossary' %}"> Glossary</a>
                             </div>
-                            <p>Sheets</p>
-                            <div>
+                            <p class="sheets"> Sheets </p>
+                            <div class="sheet_links">
 
                                 {% for sheet in sheets %}
                                 <div>
