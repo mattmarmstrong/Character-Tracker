@@ -1,6 +1,307 @@
 .all {
     color: antiquewhite;
 }
-.header {
-    left: 50%;
+
+.formsHead{
+    font-size: 28px;
+    alignment: left;
+}
+
+.formsAndStats{
+    padding: 10px;
+}
+.forms  {
+    text-align: center;
+    background-color: #343232;
+    width: 400px;
+    height: 500px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.nameWrapper {
+    padding: 15px 20px;
+    box-sizing: border-box;
+}
+
+.levelWrapper {
+    padding: 15px 20px;
+}
+.levelForm {
+    width: 50px;
+}
+
+.raceWrapper {
+    padding: 15px 20px;
+
+}
+
+.classWrapper {
+    padding: 15px 20px;
+
+}
+
+.backgroundWrapper {
+    padding: 15px 20px;
+
+}
+
+.alignmentWrapper {
+    padding: 15px 20px;
+
+}
+
+.expWrapper {
+    padding: 15px 20px;
+
+}
+
+.inspirationWrapper {
+    padding: 15px 20px;
+
+}
+
+.statsHead{
+    font-size: 28px;
+    text-align: center;
+}
+.statistics {
+    background-color: #343232;
+    width: 675px;
+    height: 225px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+}
+
+.strWrapper {
+    float: left;
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-bottom: 50px;
+}
+.dexWrapper {
+    float:left;
+    padding-top: 10px;
+    padding-right: 25px;
+    padding-bottom: 50px;
+}
+.conWrapper {
+    padding-top: 10px;
+    padding-bottom: 50px;
+}
+.wisWrapper {
+    float: left;
+    padding-right: 25px;
+}
+.intWrapper {
+    float:left;
+    padding-right: 25px;
+}
+
+.savingThrows {
+    background-color: #343232;
+    width: 250px;
+    height: 150px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+}
+
+.throwsWrapper {
+    margin-left: 60px;
+}
+.saveLabel{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.battle {
+    background-color: #343232;
+    width: 675px;
+    height: 275px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+}
+
+.battleHead {
+    font-size: 28px;
+    text-align: center;
+}
+
+.diceWrapper {
+    margin-left: 110px;
+    margin-bottom: 20px;
+}
+
+.initiationWrapper {
+    margin-left: 190px;
+    margin-bottom: 20px;
+}
+
+.speedWrapper {
+    margin-left: 215px;
+    margin-bottom: 20px;
+}
+
+.hpWrapper {
+    margin-left: 65px;
+    margin-bottom: 20px;
+}
+
+.successWrapper {
+    margin-left: 90px;
+    margin-bottom: 20px;
+}
+
+.equipment {
+    background-color: #343232;
+    width: 350px;
+    height: 440px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.equipHead {
+    font-size: 28px;
+}
+
+.aCWrapper {
+    margin-bottom: 15px;
+}
+
+.ppWrapper {
+    margin-bottom: 15px;
+}
+
+.gpWrapper {
+    margin-bottom: 15px;
+}
+
+.spWrapper {
+    margin-bottom: 15px;
+}
+
+.cpWrapper {
+    margin-bottom: 15px;
+}
+
+.skills {
+    background-color: #343232;
+    width: 300px;
+    height: 435px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+}
+
+.skillsHead {
+    text-align: center;
+    font-size: 28px;
+}
+
+.skillsWrapper {
+    margin-left: 70px;
+}
+
+.languageAndProf {
+    background-color: #343232;
+    width: 390px;
+    height: 510px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.langWrapper {
+    margin-bottom: 15px;
+}
+
+.profWrapper {
+    margin-bottom: 15px;
+}
+
+.personality {
+    background-color: #343232;
+    width: 360px;
+    height: 1070px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.traitWrapper {
+    margin-bottom: 15px;
+}
+
+.idealsWrapper {
+    margin-bottom: 15px;
+}
+
+.bondsWrapper {
+    margin-bottom: 15px;
+}
+
+.flawsWrapper {
+    margin-bottom: 15px;
+}
+
+.featuresWrapper {
+    margin-bottom: 15px;
+}
+
+.other {
+    background-color: #343232;
+    width: 360px;
+    height: 460px;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid whitesmoke;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.otherHead {
+    font-size: 28px;
+}
+
+.spellsWrapper {
+    margin-bottom: 15px;
+}
+
+.notesWrapper {
+    margin-bottom: 15px;
+}
+
+.submit {
+    font-size: 18px;
+    text-align: center;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #343232;
+  border: 1px solid whitesmoke;
+  color: antiquewhite;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: Cambria, sans-serif;
+  font-size: 28px;
 }
