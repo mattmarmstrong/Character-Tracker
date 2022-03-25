@@ -163,8 +163,15 @@
 </div>
 
 <div class="other">
+    <!--<p>Feats:
+    {% for feat in feats %}
+    {{feat}}
+    {% endfor %}
+    </p> -->
     <p>Features: {{sheet.features}}</p>
-    <p>Spells: {{sheet.spells}}</p>
+    <p>Spells:
+    <pre>{{sheet.spells}}</pre>
+    </p>
     <p>{{sheet.notes}}</p>
 </div>
 

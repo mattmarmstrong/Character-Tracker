@@ -1,9 +1,7 @@
-from pydoc import describe
-
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.deletion import CASCADE, PROTECT
+from django.db.models import Avg, Count
 from multiselectfield import MultiSelectField
 
 
@@ -17,35 +15,58 @@ class Room(models.Model):
         return self.name
 
 
-"""
-model that will be implemented in next sprint, work in progress
-class Feature(models.Model):
-    name = models.CharField(max_length=60, null=True)
-    F_CHOICES = [
-        ('Feature', 'Feature'),
-        ('Trait', 'Trait'),
-        ('Spell', 'Spell'),
-    ]
-    featureType = models.CharField(max_length=20, choices=F_CHOICES, default='Feature')
-    notes = models.TextField(null=True, blank=True)
+class Feat(models.Model):
+    name = models.CharField(max_length=60)
+    description = models.TextField(null=True, blank=True)
+    numberRatings = models.IntegerField(default=0)
+
+    @property
+    def avg_fun_rating(self):
+        avg = self.feat_rating.all().aggregate(Avg('fun')).get('fun__avg', 0)
+        if avg is None:
+            return 0.0
+        else:
+            return round(avg, 1)
+
+    @property
+    def avg_useful_rating(self):
+        avg = self.feat_rating.all().aggregate(Avg('usefulness')).get('usefulness__avg')
+        if avg is None:
+            return 0.0
+        else:
+            return round(avg, 1)
+
+    @property
+    def total_rating(self):
+        total = self.feat_rating.all().annotate(rate_count=Count('fun'))
+        if total is None:
+            return 0.0
+        else:
+            return total
 
     def __str__(self):
         return self.name
-"""
-"""
-model that will be implemented in next sprint, work in progress
-class Equipment(models.Model):
-    name = models.CharField(max_length=60, null=True)
-    IS_WEAPON = [
-        ('Y', 'Yes'),
-        ('N', 'No'),
+
+
+class Rating(models.Model):
+    RATING_CHOICES = [
+        (1, '1 - Trash'),
+        (2, '2 - Bad'),
+        (3, '3 - Average'),
+        (4, '4 - Good'),
+        (5, '5 - Amazing'),
     ]
-    classes = models.CharField(max_length=20, choices=IS_WEAPON, default='No')
-    notes = models.TextField(null=True, blank=True)
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    feat = models.ForeignKey(Feat, on_delete=models.CASCADE, related_name='feat_rating')
+
+    fun = models.IntegerField(choices=RATING_CHOICES)
+    usefulness = models.IntegerField(choices=RATING_CHOICES)
+
+    comment = models.TextField(max_length=200, blank=True)
 
     def __str__(self):
-        return self.name
-"""
+        return str(self.user)
 
 
 class Sheet(models.Model):
@@ -171,6 +192,7 @@ class Sheet(models.Model):
     flaws = models.TextField(null=True, blank=True)
 
     # other
+    feats = models.ManyToManyField(Feat, blank=True)  # unused right now, not vital to any epic
     features = models.TextField(null=True, blank=True)
     spells = models.TextField(null=True, blank=True)
     notes = models.TextField(null=True, blank=True)

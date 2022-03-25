@@ -5,6 +5,6 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(Room)
+admin.site.register(Rating)
 admin.site.register(Sheet)
-# admin.site.register(Feature)
-# admin.site.register(Equipment)
+admin.site.register(Feat)

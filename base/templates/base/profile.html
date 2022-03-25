@@ -3,10 +3,9 @@
 {% load static %}
 
 {% block content%}
-    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/profile.css'%}">
-{% if request.user == user or request.user.is_superuser%}
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/profile.css'%}">
 
-    <style>
+<style>
     .profile-container {
         display: grid;
         grid-template-columns: 1fr 3fr;
@@ -30,15 +29,17 @@
             <input type="submit" value="Search">
         </form>
 
+        <span class="search-outcome-txt">{{found}}</span>
+
         <p>Default search filter is by name.</p>
         <p>To filter by either name, level, class and date created search in the search format: &ltkeyword to filter
-            result&gt;; &ltsearch query&gt</p>
-        <p>To search by date, only use numeric format: date; year-month-day</p>
+            result &gt; ; &ltsearch query&gt</p>
+        <p>To search by date, only use numeric format: date ; year-month-day</p>
 
         <hr>
     </div>
 
-    <table text-align = "center">
+    <table text-align="center">
         <tr>
             <th>Name</th>
             <th>Class</th>
@@ -47,7 +48,6 @@
         </tr>
 
         {% for sheet in sheets %}
-
         {% if request.user == sheet.user or request.user.is_superuser %}
         <tr>
             <td><a href="{%url 'sheet' sheet.id %}" class="row-link">{{sheet.name}}</a></td>
@@ -55,19 +55,11 @@
             <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.lvl}}</a></td>
             <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.created}}</a></td>
         </tr>
-            {% endif %}
-
+        {% endif %}
         {% endfor %}
 
     </table>
 
 </div>
-{% else %}
-<div>
 
-    <p>You don't have permission to view this page.</p>
-    <a href = "{% url 'home' %}">Back home</a>
-
-</div>
-{% endif %}
 {% endblock content %}
