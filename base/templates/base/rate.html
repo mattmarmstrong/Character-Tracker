@@ -1,0 +1,28 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<span class="rate_feat"><b>{{feat.name}}</b></span>
+<pre>{{feat.description}}</pre>
+
+<form method="post" action="">
+    {% csrf_token %}
+    <div class="nameWrapper">
+        <label for="{{ form.fun.id_for_label }}">Fun Rating:</label>
+        {{form.fun}}
+    </div>
+
+    <div class="nameWrapper">
+        <label for="{{ form.usefulness.id_for_label }}">Usefulness Rating:</label>
+        {{form.usefulness}}
+    </div>
+
+    <!--<div class="nameWrapper">
+        <label for="{{ form.comment.id_for_label }}">Comments:</label>
+        {{form.comment}}
+    </div>-->
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock content %}

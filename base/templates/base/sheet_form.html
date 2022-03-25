@@ -221,7 +221,12 @@
                 <label for="{{ form.features.id_for_label }}"> Features:</label>
                 {{ form.features }}
             </div>
-            </div>
+            <!--<div class="featuresWrapper">
+                {{ form.feats.errors }}
+                <label for="{{ form.feats.id_for_label }}"> Feats:</label>
+                {{ form.feats }}
+            </div>-->
+        </div>
 
         <div class="other">
             <h1 class="otherHead"> Extra
@@ -240,7 +245,7 @@
             </div>
         <div class="submit">
         <p>Fields denoted with * are required.</p>
-        <input type="submit" value="Create"/>
+            <input type="submit" value="Submit"/>
         </div>
     </form>
 

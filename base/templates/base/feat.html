@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/room.css'%}">
+
+<div>
+    <a href="{% url 'rate-options' %}">Back</a>
+</div>
+
+<h1>{{feat.name}}</h1>
+<div>
+    <pre>{{feat.description}}</pre>
+</div>
+<div>
+    <p>Fun Rating: {{feat.avg_fun_rating}}/5.0 </p>
+    <p>Usefulness Rating: {{feat.avg_useful_rating}}/5.0</p>
+    <p>Total Ratings: {{feat.total_rating.all.count}}</p>
+</div>
+<div>
+    <a href="{% url 'rate-feat' feat.id %}">Rate</a>
+</div>
+
+{% endblock content %}

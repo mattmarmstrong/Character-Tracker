@@ -1,15 +1,15 @@
 from multiprocessing import context
 
 from django.contrib.auth.decorators import login_required
-from django.core.handlers import exception
+from django.db.models import Avg, Count
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as dj_login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.views.generic import ListView
+
 from .models import *
-from .forms import SheetForm
-from django.db.models import Q
+from .forms import SheetForm, RateForm
 
 
 # Create your views here.
@@ -60,44 +60,55 @@ def login(request):
     return render(request, 'base/login.html', context)
 
 
-def user_profile(request):
-    q = request.GET.get('q') if request.GET.get('q') is not None else ''
-
-    search = q.split(";")
-
-    if "name;" in q:
-        sheets = Sheet.objects.filter(name__icontains=search[1].lstrip())
-    elif "level;" in q:
-        sheets = Sheet.objects.filter(lvl__icontains=search[1].lstrip())
-    elif "class;" in q:
-        sheets = Sheet.objects.filter(classes__icontains=search[1].lstrip())
-    elif "date;" in q:
-        sheets = Sheet.objects.filter(created__icontains=search[1].lstrip())
-    else:
-        sheets = Sheet.objects.filter(name__icontains=q)
-
-    context = {'sheets': sheets}
-    return render(request, 'base/profile.html', context)
-
-
 def logout_user(request):
     logout(request)
     return redirect('home')
 
 
 @login_required(login_url='/login')
+def user_profile(request):
+    q = request.GET.get('q') if request.GET.get('q') is not None else ''
+
+    search = q.split(";")
+    sheets = Sheet.objects.filter(name__icontains=q)
+    found = ''
+
+    if ";" in q:
+        if "name" in search[0]:
+            sheets = Sheet.objects.filter(name__icontains=search[1].strip())
+        elif "level" in search[0]:
+            if search[1].strip().isnumeric():
+                sheets = Sheet.objects.filter(lvl=search[1].strip())
+        elif "class" in search[0]:
+            sheets = Sheet.objects.filter(classes__icontains=search[1].strip())
+        elif "date" in search[0]:
+            sheets = Sheet.objects.filter(created__icontains=search[1].strip())
+
+    if not sheets.exists():
+        if ";" in q:
+            found = f"{search[0].capitalize()}: {search[1]} was not found!"
+
+    context = {'sheets': sheets, 'found': found}
+    return render(request, 'base/profile.html', context)
+
+
+@login_required(login_url='/login')
 def home(request):
-    rooms = Room.objects.all()
-    sheets = Sheet.objects.all()
-    context = {'rooms': rooms, 'sheets': sheets}
-    return render(request, 'base/home.html', context)
+    return render(request, 'base/home.html')
 
 
 @login_required(login_url='/login')
 def glossary(request):
-    room = Room.objects.all()
-    context = {'room': room}
-    return render(request, 'base/glossary.html', context)
+    return render(request, 'base/glossary.html')
+
+
+@login_required(login_url='/login')
+def rate_options(request):
+    ratings = Rating.objects.all()
+    feats = Feat.objects.all()
+
+    context = {'ratings': ratings, 'feats': feats}
+    return render(request, 'base/rate_options.html', context)
 
 
 @login_required(login_url='/login')
@@ -108,13 +119,22 @@ def room(request, pk):
 
 
 @login_required(login_url='/login')
+def feat(request, pk):
+    feat = Feat.objects.get(id=pk)
+    context = {'feat': feat}
+    return render(request, 'base/feat.html', context)
+
+
+@login_required(login_url='/login')
 def sheet(request, pk):
     sheet = Sheet.objects.get(id=pk)
 
     if request.user != sheet.user and not request.user.is_superuser:  # only admins or users can view their own sheets
         return redirect('home')
 
-    context = {'sheet': sheet}
+    feats = sheet.feats.all()
+
+    context = {'sheet': sheet, 'feats': feats}
     return render(request, 'base/sheet.html', context)
 
 
@@ -180,3 +200,25 @@ def delete_sheet(request, pk):
         return redirect('home')
 
     return render(request, 'base/delete.html', {'obj': sheet})
+
+
+@login_required(login_url='/login')
+def rate(request, pk):
+    feat = Feat.objects.get(id=pk)
+    user = request.user
+
+    form = RateForm()
+
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.feat = feat
+            alreadyRated = Rating.objects.filter(user=user).filter(feat=feat)
+            if alreadyRated:
+                alreadyRated.delete()
+            rate.save()
+            return redirect(f'/feat/{pk}')
+
+    return render(request, 'base/rate.html', {'form': form, 'feat': feat})

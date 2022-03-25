@@ -17,4 +17,8 @@ urlpatterns = [
 
     path('sheet/<str:pk>/', views.sheet, name="sheet"),
     path('glossary/', views.glossary, name="glossary"),
+
+    path('rate-options/', views.rate_options, name="rate-options"),
+    path('feat/<str:pk>/', views.feat, name="feat"),
+    path('rate/<str:pk>/', views.rate, name="rate-feat"),
 ]
