@@ -1,5 +1,6 @@
 from django.forms import ModelForm
-from .models import Sheet
+from .models import Sheet, Rating, Feat
+from django import forms
 
 
 class SheetForm(ModelForm):
@@ -42,8 +43,18 @@ class SheetForm(ModelForm):
                   'flaws',
                   'skills',
                   'savThrow',
+                  # 'feats',
                   'features',
                   'equipment',
                   'spells',
                   'notes'
+                  ]
+
+
+class RateForm(forms.ModelForm):
+    class Meta:
+        model = Rating
+        fields = ['fun',
+                  'usefulness',
+                  # 'comment'
                   ]

@@ -9,94 +9,96 @@
     <form method="POST" action="">
         {% csrf_token %}
 
-        <div class="header">
-            <div class="fieldWrapper">
+            <div class="forms">
+                <h1 class="formsHead"> Details </h1>
+            <div class="nameWrapper">
                 {{ form.name.errors }}
                 <label for="{{ form.name.id_for_label }}"> Name*:</label>
                 {{ form.name }}
             </div>
-            <div class="fieldWrapper">
+            <div class="levelWrapper">
                 {{ form.lvl.errors }}
                 <label for="{{ form.lvl.id_for_label }}"> Level:</label>
                 {{ form.lvl }}
             </div>
-            <div class="fieldWrapper">
+            <div class="raceWrapper">
                 {{ form.race.errors }}
                 <label for="{{ form.race.id_for_label }}"> Race*:</label>
                 {{ form.race }}
             </div>
-            <div class="fieldWrapper">
+            <div class="classWrapper">
                 {{ form.classes.errors }}
                 <label for="{{ form.classes.id_for_label }}"> Class:</label>
                 {{ form.classes }}
             </div>
-            <div class="fieldWrapper">
+            <div class="backgroundWrapper">
                 {{ form.background.errors }}
                 <label for="{{ form.background.id_for_label }}"> Background*:</label>
                 {{ form.background }}
             </div>
-            <div class="fieldWrapper">
+            <div class="alignmentWrapper">
                 {{ form.alignment.errors }}
                 <label for="{{ form.alignment.id_for_label }}"> Alignment:</label>
                 {{ form.alignment }}
             </div>
-            <div class="fieldWrapper">
+            <div class="expWrapper">
                 {{ form.exp.errors }}
                 <label for="{{ form.exp.id_for_label }}"> Exp:</label>
                 {{ form.exp }}
             </div>
-            <div class="fieldWrapper">
+            <div class="inspirationWrapper">
                 {{ form.inspiration.errors }}
                 <label for="{{ form.inspiration.id_for_label }}"> Inspiration:</label>
                 {{ form.inspiration }}
             </div>
         </div>
 
+
         <div class="statistics">
-            <div class="fieldWrapper">
+            <h1 class="statsHead"> Stats </h1>
+            <div class="strWrapper">
                 {{ form.str.errors }}
                 <label for="{{ form.str.id_for_label }}"> Str:</label>
                 {{ form.str }}
             </div>
-            <div class="fieldWrapper">
+            <div class="dexWrapper">
                 {{ form.dex.errors }}
                 <label for="{{ form.dex.id_for_label }}"> Dex:</label>
                 {{ form.dex }}
             </div>
-            <div class="fieldWrapper">
+            <div class="conWrapper">
                 {{ form.con.errors }}
                 <label for="{{ form.con.id_for_label }}"> Con:</label>
                 {{ form.con }}
             </div>
-            <div class="fieldWrapper">
+            <div class="wisWrapper">
                 {{ form.wis.errors }}
                 <label for="{{ form.wis.id_for_label }}"> Wis:</label>
                 {{ form.wis }}
             </div>
-            <div class="fieldWrapper">
+            <div class="intWrapper">
                 {{ form.int.errors }}
                 <label for="{{ form.int.id_for_label }}"> Int:</label>
                 {{ form.int }}
             </div>
-            <div class="fieldWrapper">
+            <div class="chaWrapper">
                 {{ form.cha.errors }}
                 <label for="{{ form.cha.id_for_label }}"> Cha:</label>
                 {{ form.cha }}
             </div>
         </div>
 
-        <div class="saving throws">
-            <div class="fieldWrapper">
+        <div class="savingThrows">
+            <div class="throwsWrapper">
                 {{ form.savThrow.errors }}
-                <label for="{{ form.savThrow.id_for_label }}"> Saving Throws:</label>
+                <label class="saveLabel"for="{{ form.savThrow.id_for_label }}"> Saving Throws:</label>
                 {{ form.savThrow }}
             </div>
         </div>
 
         <div class="battle">
-            <p>Total</p>
-            <p>Current </p>
-            <div class="fieldWrapper">
+            <h1 class="battleHead"> Battle</h1>
+            <div class="diceWrapper">
                 {{ form.numHitDice.errors }}
                 {{ form.currentHitDice.errors }}
                 {{ form.hitDice.errors }}
@@ -105,19 +107,17 @@
                 {{ form.currentHitDice }}
                 {{ form.hitDice }}
             </div>
-            <div class="fieldWrapper">
+            <div class="initiationWrapper">
                 {{ form.initiationRoll.errors }}
                 <label for="{{ form.initiationRoll.id_for_label }}"> Initiation:</label>
                 {{ form.initiationRoll }}
             </div>
-            <div class="fieldWrapper">
+            <div class="speedWrapper">
                 {{ form.speed.errors }}
                 <label for="{{ form.speed.id_for_label }}"> Speed:</label>
                 {{ form.speed }} ft
             </div>
-            <div class="fieldWrapper">
-                <p>Total</p>
-                <p>Current </p>
+            <div class="hpWrapper">
                 {{ form.maxHp.errors }}
                 {{ form.current.errors }}
                 {{ form.tempHp.errors }}
@@ -126,9 +126,7 @@
                 {{ form.current }}
                 {{ form.tempHp }}
             </div>
-            <div class="fieldWrapper">
-                <p>Success</p>
-                <p>Failure </p>
+            <div class="successWrapper">
                 {{ form.deathSuccess.errors }}
                 {{ form.deathFail.errors }}
                 <label for="{{ form.deathSuccess.id_for_label }}"> Death Saves:</label>
@@ -138,34 +136,33 @@
         </div>
 
         <div class="equipment">
-            <p>Total</p>
-            <p>Current </p>
-            <div class="fieldWrapper">
+            <h1 class="equipHead"> Inventory </h1>
+            <div class="aCWrapper">
                 {{ form.armourAC.errors }}
                 <label for="{{ form.armourAC.id_for_label }}"> AC:</label>
                 {{ form.armourAC }}
             </div>
-            <div class="fieldWrapper">
+            <div class="ppWrapper">
                 {{ form.pp.errors }}
                 <label for="{{ form.pp.id_for_label }}"> pp:</label>
                 {{ form.pp }}
             </div>
-            <div class="fieldWrapper">
+            <div class="gpWrapper">
                 {{ form.gp.errors }}
                 <label for="{{ form.gp.id_for_label }}"> gp:</label>
                 {{ form.gp }}
             </div>
-            <div class="fieldWrapper">
+            <div class="spWrapper">
                 {{ form.sp.errors }}
                 <label for="{{ form.sp.id_for_label }}"> sp:</label>
                 {{ form.sp }}
             </div>
-            <div class="fieldWrapper">
+            <div class="cpWrapper">
                 {{ form.cp.errors }}
                 <label for="{{ form.cp.id_for_label }}"> cp:</label>
                 {{ form.cp }}
             </div>
-            <div class="fieldWrapper">
+            <div class="equipWrapper">
                 {{ form.equipment.errors }}
                 <label for="{{ form.equipment.id_for_label }}"> Equipment:</label>
                 {{ form.equipment }}
@@ -173,20 +170,22 @@
         </div>
 
         <div class="skills">
-            <div class="fieldWrapper">
+            <h1 class="skillsHead"> Skills </h1>
+            <div class="skillsWrapper">
                 {{ form.skills.errors }}
-                <label for="{{ form.skills.id_for_label }}"> Skills:</label>
+                <label for="{{ form.skills.id_for_label }}"></label>
                 {{ form.skills }}
             </div>
         </div>
 
-        <div class="language and other proficiencies">
-            <div class="fieldWrapper">
+        <div class="languageAndProf">
+            <h1> Language and Proficiencies </h1>
+            <div class="langWrapper">
                 {{ form.language.errors }}
                 <label for="{{ form.language.id_for_label }}"> Language:</label>
                 {{ form.language }}
             </div>
-            <div class="fieldWrapper">
+            <div class="profWrapper">
                 {{ form.proficiencies.errors }}
                 <label for="{{ form.proficiencies.id_for_label }}"> Proficiencies:</label>
                 {{ form.proficiencies }}
@@ -194,50 +193,63 @@
         </div>
 
         <div class="personality">
-            <div class="fieldWrapper">
+
+            <h1 class="personalityHead"> Personality </h1>
+
+            <div class="traitWrapper">
                 {{ form.personality.errors }}
                 <label for="{{ form.personality.id_for_label }}"> Traits:</label>
                 {{ form.personality }}
             </div>
-            <div class="fieldWrapper">
+            <div class="idealsWrapper">
                 {{ form.ideals.errors }}
                 <label for="{{ form.ideals.id_for_label }}"> Ideals:</label>
                 {{ form.ideals }}
             </div>
-            <div class="fieldWrapper">
+            <div class="bondsWrapper">
                 {{ form.bonds.errors }}
                 <label for="{{ form.bonds.id_for_label }}"> Bonds:</label>
                 {{ form.bonds }}
             </div>
-            <div class="fieldWrapper">
+            <div class="flawsWrapper">
                 {{ form.flaws.errors }}
                 <label for="{{ form.flaws.id_for_label }}"> Flaws:</label>
                 {{ form.flaws }}
             </div>
-        </div>
-
-        <div class="other">
-            <div class="fieldWrapper">
+            <div class="featuresWrapper">
                 {{ form.features.errors }}
                 <label for="{{ form.features.id_for_label }}"> Features:</label>
                 {{ form.features }}
             </div>
-            <div class="fieldWrapper">
+            <!--<div class="featuresWrapper">
+                {{ form.feats.errors }}
+                <label for="{{ form.feats.id_for_label }}"> Feats:</label>
+                {{ form.feats }}
+            </div>-->
+        </div>
+
+        <div class="other">
+            <h1 class="otherHead"> Extra
+            </h1>
+            <div class="spellsWrapper">
                 {{ form.spells.errors }}
                 <label for="{{ form.spells.id_for_label }}"> Spells:</label>
                 {{ form.spells }}
             </div>
-            <div class="fieldWrapper">
+
+            <div class="notesWrapper">
                 {{ form.notes.errors }}
                 <label for="{{ form.notes.id_for_label }}"> Notes:</label>
                 {{ form.notes }}
             </div>
-        </div>
-
+            </div>
+        <div class="submit">
         <p>Fields denoted with * are required.</p>
-
-        <input type="submit" value="Submit"/>
+            <input type="submit" value="Submit"/>
+        </div>
     </form>
+
+
 </div>
 
 {% endblock content %}

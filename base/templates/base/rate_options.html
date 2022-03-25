@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<p>Rate these Features!</p>
+
+<div>
+    {% for feat in feats %}
+    <p><a href="{% url 'feat' feat.id %}">{{feat.name}}</a></p>
+    <p>Fun Rating: {{feat.avg_fun_rating}}/5.0 </p>
+    <p>Usefulness Rating: {{feat.avg_useful_rating}}/5.0</p>
+    <p>Total Ratings: {{feat.total_rating.all.count}}</p>
+    {% endfor %}
+</div>
+
+{% endblock content %}
