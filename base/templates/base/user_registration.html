@@ -6,14 +6,14 @@
 
     <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/user_registration.css'%}">
 
-    <div class="registration_form">
+<div class="registration_form">
 
     <form method = "POST" action = "">
-        
+
         {% csrf_token %}
 
         {{form.as_p}}
-       
+
         <input type="Submit" value="Register">
 
     </form>

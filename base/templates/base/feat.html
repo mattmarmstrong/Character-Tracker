@@ -3,23 +3,26 @@
 
 {% block content %}
 
-<link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/room.css'%}">
+<link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/feat.css'%}">
 
-<div>
-    <a href="{% url 'rate-options' %}">Back</a>
-</div>
+<div class =  "feat-body">
+    <div>
+        <a href="{% url 'rate-options' %}">Back</a>
+    </div>
 
-<h1>{{feat.name}}</h1>
-<div>
-    <pre>{{feat.description}}</pre>
+    <div class = "feat" >
+        <h1 class = "feat-title">{{feat.name}}</h1>
+        <div>
+            <pre>{{feat.description}}</pre>
+        </div>
+        <div>
+            <p>Fun Rating: {{feat.avg_fun_rating}}/5.0 </p>
+            <p>Usefulness Rating: {{feat.avg_useful_rating}}/5.0</p>
+            <p>Total Ratings: {{feat.total_rating.all.count}}</p>
+        </div>
+        <div>
+            <a href="{% url 'rate-feat' feat.id %}">Rate</a>
+        </div>
+    </div>
 </div>
-<div>
-    <p>Fun Rating: {{feat.avg_fun_rating}}/5.0 </p>
-    <p>Usefulness Rating: {{feat.avg_useful_rating}}/5.0</p>
-    <p>Total Ratings: {{feat.total_rating.all.count}}</p>
-</div>
-<div>
-    <a href="{% url 'rate-feat' feat.id %}">Rate</a>
-</div>
-
 {% endblock content %}

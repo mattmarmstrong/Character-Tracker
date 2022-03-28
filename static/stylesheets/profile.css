@@ -1,3 +1,44 @@
+
 .profile-container {
-    color:antiquewhite;
+    background-color: rgba(0, 0, 0, 0.4);
+	display: grid;
+	grid-template-columns: 2fr 3fr;
+	color: antiquewhite;
+
+	font-size: 25px;
+}
+
+
+.filter{
+
+	color: antiquewhite;
+
+}
+
+tr.table-header{
+
+	background-color: rgba(147, 226, 229, 0.411);
+
+}
+
+
+tr.table-body:nth-child(even){
+
+	background-color: rgba(73, 73, 73, 0.4);
+
+}
+
+tr.table-body:hover{
+
+	background-color: #a9a9a967;
+}
+
+
+th, td {
+	padding: 15px;
+	width: 25%;
+	height: fit-content;
+
+	text-align: center;
+
 }

@@ -1,1 +1,14 @@
-.registration_form {color: antiquewhite}
+.registration_form {
+
+    color: antiquewhite;
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: scale(1.5);
+    transform-origin: 1% -10%;
+    text-align: left;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 3%;
+
+}
+
