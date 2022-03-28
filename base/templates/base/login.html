@@ -10,17 +10,22 @@
 
     <form class="info" method = "POST" action = "">
         {% csrf_token %}
+        <div class = "username">
+            <label>Username:</label>
+            <input type="text" name = "username" placeholder = "Enter Username">
+        </div>
 
-        <label>Username:</label>
-        <input type="text" name = "username" placeholder = "Enter Username">
-        
-        <label>Password:</label>
-        <input type="password" name = "password" placeholder = "Enter Password">
+        <div class = "password">
+            <label>Password:</label>
+            <input type="password" name = "password" placeholder = "Enter Password">
+        </div>
 
-        <input type="Submit" value="Login">
+        <div class = "button">
+            <input type="Submit" value="Login">
+        </div>
 
     </form>
 
-</div>
+    </div>
 
 {% endblock content %}

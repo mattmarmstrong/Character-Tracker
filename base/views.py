@@ -1,4 +1,5 @@
 from multiprocessing import context
+from queue import Empty
 
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg, Count
@@ -25,8 +26,7 @@ def reg_page(request):
             user.save()
             dj_login(request, user)
             return redirect('home')
-        else:
-            messages.error(request, 'An error occurred during')
+
 
     context = {'form': form}
     return render(request, 'base/user_registration.html', context)
@@ -42,8 +42,11 @@ def login(request):
         # check if the user does exits
         try:
             user = User.objects.get(username=username)
+            user_exists = True
         except:
             messages.error(request, 'User does not exist')
+            user_exists = False
+
 
         # validate the user login information
         user = authenticate(request, username=username, password=password)
@@ -53,8 +56,9 @@ def login(request):
         if user is not None:
             dj_login(request, user)
             return redirect('home')
-        else:
-            messages.error(request, 'Username OR password are not recognized')
+        elif user_exists != False:
+            messages.error(request, 'Password does not match')
+
 
     context = {}
     return render(request, 'base/login.html', context)

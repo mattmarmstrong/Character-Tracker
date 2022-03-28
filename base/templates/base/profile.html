@@ -5,24 +5,11 @@
 {% block content%}
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/profile.css'%}">
 
-<style>
-    .profile-container {
-        display: grid;
-        grid-template-columns: 1fr 3fr;
-    }
-
-    td {
-        width: 25%;
-        text-align: center;
-    }
-
-</style>
-
 
 <div class = "profile-container">
 
 
-    <div>
+    <div class = "filter">
         <h3>Character Filter:</h3>
         <form method="GET" action="">
             <input type="text" name="q" placeholder="Search Sheets..."/>
@@ -39,8 +26,8 @@
         <hr>
     </div>
 
-    <table text-align="center">
-        <tr>
+    <table>
+        <tr class = "table-header">
             <th>Name</th>
             <th>Class</th>
             <th>Level</th>
@@ -49,7 +36,7 @@
 
         {% for sheet in sheets %}
         {% if request.user == sheet.user or request.user.is_superuser %}
-        <tr>
+        <tr class = "table-body">
             <td><a href="{%url 'sheet' sheet.id %}" class="row-link">{{sheet.name}}</a></td>
             <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.classes}}</a></td>
             <td><a href="{%url 'sheet' sheet.id %}" tableindex="-1" class=row-link>{{sheet.lvl}}</a></td>
