@@ -2,37 +2,54 @@
 {% load static %}
 
 {% block content %}
+<div class="all">
 <link rel='stylesheet' type='text/css' media='screen' href="{% static 'stylesheets/sheet.css'%}">
 <a href="{% url 'update-sheet' sheet.id %}">Edit</a>
 <a href="{% url 'delete-sheet' sheet.id %}">Delete</a>
 <a href="{% url 'glossary' %}">Glossary</a>
 
-<div class="header">
-    <h1 class="name">Name: {{sheet.name}}</h1>
-    <p>User: {{sheet.user}}</p>
-    <p>Level: {{sheet.lvl}}</p>
-    <p>Race: {{sheet.race}}</p>
-    <p>Class: {{sheet.classes}}</p>
-    <p>Background: {{sheet.background}}</p>
-    <p>Alignment: {{sheet.alignment}}</p>
-    <p>Exp: {{sheet.exp}}</p>
-    <p>Inspiration: {{sheet.inspiration}}</p>
-    <p>Proficiency: +<span id="proficiency"></span></p>
+<button class="displayButton" onclick="changeDisplay('layout1')"> Block </button>
+<button class="displayButton"  onclick="changeDisplay('layout2')"> In-line </button>
+
+<script>
+
+    /* function that is called when the display format button is clicked */
+function changeDisplay(displayName) {
+  let i;
+  let x = document.getElementsByClassName("layout");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(displayName).style.display = "block";
+}
+</script>
+<div id="layout1" class = "layout">
+<div class="sheetHeader">
+    <h1 class="name">NAME: {{sheet.name}}</h1>
+    <p class="level">LEVEL: {{sheet.lvl}}</p>
+    <p class="race">RACE: {{sheet.race}}</p>
+    <p class="class">CLASS: {{sheet.classes}}</p>
+    <p class="background">BACKGROUND: {{sheet.background}}</p>
+    <p class="align">ALIGNMENT: {{sheet.alignment}}</p>
+    <p class="exp">EXP: {{sheet.exp}}</p>
+    <p class="inspiration">INSPIRATION: {{sheet.inspiration}}</p>
+    <p class="proficiency">PROFICIENCY: +<span id="proficiency"></span></p>
 </div>
 
 <div class="statistics">
-    <p>STR: {{sheet.str}} (<span id="str-mod"></span>) </p>
-    <p>DEX: {{sheet.dex}} (<span id="dex-mod"></span>) </p>
-    <p>CON: {{sheet.con}} (<span id="con-mod"></span>) </p>
-    <p>WIS: {{sheet.wis}} (<span id="wis-mod"></span>) </p>
-    <p>INT: {{sheet.int}} (<span id="int-mod"></span>) </p>
-    <p>CHA: {{sheet.cha}} (<span id="cha-mod"></span>) </p>
-    <p>Passive Perception: <span id="passive-perception"></span></p>
+    <h1 class="statHead"> STATS </h1>
+    <p class="stat">Str: {{sheet.str}} (<span id="str-mod"></span>) </p>
+    <p class="stat">Dex: {{sheet.dex}} (<span id="dex-mod"></span>) </p>
+    <p class="stat">Con: {{sheet.con}} (<span id="con-mod"></span>) </p>
+    <p class="stat">Wis: {{sheet.wis}} (<span id="wis-mod"></span>) </p>
+    <p class="stat">Int: {{sheet.int}} (<span id="int-mod"></span>) </p>
+    <p class="stat">Cha: {{sheet.cha}} (<span id="cha-mod"></span>) </p>
+    <p class="stat">Passive Perception: <span id="passive-perception"></span></p>
 </div>
 
-<div class="saving_throws">
-    <p>Saving Throws:</p>
-    <div>
+<div class="savingThrows">
+    <h1 class="saveHead">SAVING THROWS</h1>
+    <div class="throws">
         {% for value in sheet.savThrow.choices %}
         <div>
             {% if value in sheet.savThrow %}
@@ -72,22 +89,24 @@
 </div>
 
 <div class="battle">
-    <p>Hit Dice: {{sheet.numHitDice}} {{sheet.currentHitDice}}{{sheet.hitDice}}</p>
-    <p>Initiation: {{sheet.initiationRoll}}</p>
-    <p>Speed: {{sheet.speed}}ft</p>
-    <p>HP: Temp {{sheet.tempHp}} Max {{sheet.maxHp}} Current {{sheet.current}}</p>
-    <p>Death Saves: Success {{sheet.deathSuccess}}, Failure {{sheet.deathFail}}</p>
+    <h1 class="battleHead"> BATTLE </h1>
+    <p class="misc">Hit Dice: {{sheet.numHitDice}} {{sheet.currentHitDice}}{{sheet.hitDice}}</p>
+    <p class="misc">Initiation: {{sheet.initiationRoll}}</p>
+    <p class="misc">Speed: {{sheet.speed}}ft</p>
+    <p class="misc">HP: Temp {{sheet.tempHp}} Max {{sheet.maxHp}} Current {{sheet.current}}</p>
+    <p class="misc">Death Saves: Success {{sheet.deathSuccess}}, Failure {{sheet.deathFail}}</p>
 </div>
 
 <div class="equipment">
-    <p>AC: {{sheet.armourAC}}</p>
-    <p>Money: {{sheet.pp}}pp, {{sheet.gp}}gp, {{sheet.sp}}sp, {{sheet.cp}}cp</p>
-    <p>Equipment: {{sheet.equipment}}</p>
+    <h1 class="equipHead"> EQUIPMENT </h1>
+    <p class="equip">AC: {{sheet.armourAC}}</p>
+    <p class="equip">Money: {{sheet.pp}}pp, {{sheet.gp}}gp, {{sheet.sp}}sp, {{sheet.cp}}cp</p>
+    <p class="equip">Equipment: {{sheet.equipment}}</p>
 </div>
 
 <div class="skills">
-    <p>Skills:</p>
-    <div>
+    <h1 class="skillsHead"> SKILLS </h1>
+    <div class="skill">
         {% for value in sheet.skills.choices %}
         <div>
             {% if value in sheet.skills %}
@@ -150,29 +169,31 @@
     </div>
 </div>
 
-<div class="languages_and_other_proficiencies">
-    <p>Languages known: {{sheet.language}}</p>
-    <p>Other Proficiencies: {{sheet.proficiencies}}</p>
+<div class="langsAndProfs">
+    <h1 class="lpHead"> LANGUAGES AND PROFICIENCIES </h1>
+    <p class="lAndP"> Languages known: {{sheet.language}}</p>
+    <p class="lAndP"> Other Proficiencies: {{sheet.proficiencies}}</p>
 </div>
 
 <div class="personality">
-    <p>Traits: {{sheet.personality}}</p>
-    <p>Ideals: {{sheet.ideals}}</p>
-    <p>Bonds: {{sheet.bonds}}</p>
-    <p>Flaws: {{sheet.flaws}}</p>
+    <h1 class="pHead"> PERSONALITY </h1>
+    <p class="ps">Traits: {{sheet.personality}}</p>
+    <p class="ps">Ideals: {{sheet.ideals}}</p>
+    <p class="ps">Bonds: {{sheet.bonds}}</p>
+    <p class="ps">Flaws: {{sheet.flaws}}</p>
 </div>
 
-<div class="other">
+<div class="otherFeats">
+    <h1 class="otherHead"> OTHER </h1>
     <!--<p>Feats:
     {% for feat in feats %}
     {{feat}}
     {% endfor %}
     </p> -->
-    <p>Features: {{sheet.features}}</p>
-    <p>Spells:
-    <pre>{{sheet.spells}}</pre>
-    </p>
-    <p>{{sheet.notes}}</p>
+    <p class="feats">Features: {{sheet.features}}</p>
+    <p class="feats">Spells:
+    <pre class="feats">{{sheet.spells}}</pre>
+    <p class="feats">{{sheet.notes}}</p>
 </div>
 
 <script>
@@ -206,5 +227,217 @@
     }
 
 </script>
+</div>
 
+<div id="layout2" class="layout" style="display:none">
+  <span onclick="this.parentElement.style.display='none'"
+  class="w3-button w3-large w3-display-topright">&times;</span>
+<div class="sheetHeader1">
+    <h1 class="name1">NAME: {{sheet.name}}</h1>
+    <p class="level1">LEVEL: {{sheet.lvl}}</p>
+    <p class="race1">RACE: {{sheet.race}}</p>
+    <p class="class1">CLASS: {{sheet.classes}}</p>
+    <p class="background1">BACKGROUND: {{sheet.background}}</p>
+    <p class="align1">ALIGNMENT: {{sheet.alignment}}</p>
+    <p class="exp1">EXP: {{sheet.exp}}</p>
+    <p class="inspiration1">INSPIRATION: {{sheet.inspiration}}</p>
+    <p class="proficiency1">PROFICIENCY: +<span id="proficiency"></span></p>
+</div>
+
+<div class="statistics1">
+    <h1 class="statHead1"> STATS </h1>
+    <p class="stat1">Str: {{sheet.str}} (<span id="str-mod"></span>) </p>
+    <p class="stat1">Dex: {{sheet.dex}} (<span id="dex-mod"></span>) </p>
+    <p class="stat1">Con: {{sheet.con}} (<span id="con-mod"></span>) </p>
+    <p class="stat1">Wis: {{sheet.wis}} (<span id="wis-mod"></span>) </p>
+    <p class="stat1">Int: {{sheet.int}} (<span id="int-mod"></span>) </p>
+    <p class="stat1">Cha: {{sheet.cha}} (<span id="cha-mod"></span>) </p>
+    <p class="stat1">Passive Perception: <span id="passive-perception"></span></p>
+</div>
+
+<div class="savingThrows1">
+    <h1 class="saveHead1">SAVING THROWS</h1>
+    <div class="throws1">
+        {% for value in sheet.savThrow.choices %}
+        <div>
+            {% if value in sheet.savThrow %}
+            {{ value }} (proficient):
+            <script>
+                    // utilize hash map to determine if value has proficiency
+                    var obj = new Object();
+                    obj["Str"] = Math.floor((({{sheet.str}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Dex"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Con"] = Math.floor((({{sheet.con}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Wis"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Int"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Cha"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+
+                    document.write(obj["{{value}}"]);
+
+            </script>
+            {% else %}
+            {{ value }}:
+            <script>
+                    // otherwise just modifier value
+                    var obj = new Object();
+                    obj["Str"] = Math.floor((({{sheet.str}} - 10) / 2));
+                    obj["Dex"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                    obj["Con"] = Math.floor((({{sheet.con}} - 10) / 2));
+                    obj["Wis"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                    obj["Int"] = Math.floor((({{sheet.int}} - 10) / 2));
+                    obj["Cha"] = Math.floor((({{sheet.cha}} - 10) / 2));
+
+                    document.write(obj["{{value}}"]);
+
+            </script>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="battle1">
+    <h1 class="battleHead1"> BATTLE </h1>
+    <p class="misc1">Hit Dice: {{sheet.numHitDice}} {{sheet.currentHitDice}}{{sheet.hitDice}}</p>
+    <p class="misc1">Initiation: {{sheet.initiationRoll}}</p>
+    <p class="misc1">Speed: {{sheet.speed}}ft</p>
+    <p class="misc1">HP: Temp {{sheet.tempHp}} Max {{sheet.maxHp}} Current {{sheet.current}}</p>
+    <p class="misc1">Death Saves: Success {{sheet.deathSuccess}}, Failure {{sheet.deathFail}}</p>
+</div>
+
+<div class="equipment1">
+    <h1 class="equipHead1"> EQUIPMENT </h1>
+    <p class="equip1">AC: {{sheet.armourAC}}</p>
+    <p class="equip1">Money: {{sheet.pp}}pp, {{sheet.gp}}gp, {{sheet.sp}}sp, {{sheet.cp}}cp</p>
+    <p class="equip1">Equipment: {{sheet.equipment}}</p>
+</div>
+
+<div class="skills1">
+    <h1 class="skillsHead1"> SKILLS </h1>
+    <div class="skill1">
+        {% for value in sheet.skills.choices %}
+        <div>
+            {% if value in sheet.skills %}
+            {{ value }} (proficient):
+            <script>
+                    // utilize hash map with loop of chosen fields to determine if skill has proficiency
+                    var obj = new Object();
+                    obj["Acrobatics"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Animal Handling"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Arcana"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Athletics"] = Math.floor((({{sheet.str}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["History"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Deception"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Insight"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Intimidation"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Investigation"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Medicine"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Nature"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Perception"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Performance"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Persuasion"] = Math.floor((({{sheet.cha}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Religion"] = Math.floor((({{sheet.int}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Sleight of Hand"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Stealth"] = Math.floor((({{sheet.dex}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+                    obj["Survival"] = Math.floor((({{sheet.wis}} - 10) / 2)) + Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+
+                    document.write(obj["{{value}}"]);
+
+            </script>
+            {% else %}
+            {{ value }}:
+            <script>
+                    // otherwise just get modifier value for the skill
+                    var obj = new Object();
+                    obj["Acrobatics"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                    obj["Animal Handling"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                    obj["Arcana"] = Math.floor((({{sheet.int}} - 10) / 2));
+                    obj["Athletics"] = Math.floor((({{sheet.str}} - 10) / 2));
+                    obj["History"] = Math.floor((({{sheet.int}} - 10) / 2));
+                    obj["Deception"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                    obj["Insight"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                    obj["Intimidation"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                    obj["Investigation"] = Math.floor((({{sheet.int}} - 10) / 2));
+                    obj["Medicine"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                    obj["Nature"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                    obj["Perception"] = Math.floor((({{sheet.wis}} - 10) / 2));
+                    obj["Performance"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                    obj["Persuasion"] = Math.floor((({{sheet.cha}} - 10) / 2));
+                    obj["Religion"] = Math.floor((({{sheet.int}} - 10) / 2));
+                    obj["Sleight of Hand"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                    obj["Stealth"] = Math.floor((({{sheet.dex}} - 10) / 2));
+                    obj["Survival"] = Math.floor((({{sheet.wis}} - 10) / 2));
+
+                    document.write(obj["{{value}}"]);
+
+            </script>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="langsAndProfs1">
+    <h1 class="lpHead1"> LANGUAGES AND PROFICIENCIES </h1>
+    <p class="lAndP1"> Languages known: {{sheet.language}}</p>
+    <p class="lAndP1"> Other Proficiencies: {{sheet.proficiencies}}</p>
+</div>
+
+<div class="personality1">
+    <h1 class="pHead1"> PERSONALITY </h1>
+    <p class="ps1">Traits: {{sheet.personality}}</p>
+    <p class="ps1">Ideals: {{sheet.ideals}}</p>
+    <p class="ps1">Bonds: {{sheet.bonds}}</p>
+    <p class="ps1">Flaws: {{sheet.flaws}}</p>
+</div>
+
+<div class="otherFeats1">
+    <h1 class="otherHead1"> OTHER </h1>
+    <!--<p>Feats:
+    {% for feat in feats %}
+    {{feat}}
+    {% endfor %}
+    </p> -->
+    <p class="feats1">Features: {{sheet.features}}</p>
+    <p class="feats1">Spells:
+    <pre class="feats1">{{sheet.spells}}</pre>
+    <p class="feats1">{{sheet.notes}}</p>
+</div>
+
+<script>
+    // return the dnd 5e modifier value
+    function getModi(stat) {
+        return Math.floor(((stat - 10) / 2));
+    }
+
+    // arrays to hold fields and modifier values
+    const fieldArray = [{{sheet.str}}, {{sheet.dex}}, {{sheet.con}}, {{sheet.int}}, {{sheet.wis}}, {{sheet.cha}}];
+    const modArray   = [0, 0, 0, 0, 0, 0];
+
+    // arrays of id names to be used by the html
+    const strArray   = ["str-mod", "dex-mod", "con-mod", "int-mod", "wis-mod", "cha-mod"];
+
+    // proficiencies
+    proficiency = Math.floor((2 + ({{sheet.lvl}} - 1) / 4));
+    passivePerception = 10 + getModi({{sheet.wis}}) + proficiency;
+
+    // calculate required values for html
+    for (let i = 0; i < 6; i++) {
+        modArray[i] = getModi(fieldArray[i]);
+    }
+
+    // html ids from javaScript
+    document.getElementById("passive-perception").innerHTML = passivePerception;
+    document.getElementById("proficiency").innerHTML = proficiency;
+
+    for (let i = 0; i < 6; i++) {
+        document.getElementById(strArray[i]).innerHTML = modArray[i];
+    }
+
+</script>
+</div>
+
+
+
+</div>
 {% endblock content %}
