@@ -1,42 +1,471 @@
-.header {
+.all {
+    padding: 10px;
+}
+
+.displayButton {
+    font-family: Cambria sans-serif;
+    font-size: 18px;
+    background-color: #343232;
     color: antiquewhite;
+    margin-left: 30px;
+}
+.name {
+    text-align: center;
+}
+
+.race {
+    float: left;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.class {
+    float: left;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.level {
+    margin-left: 100px;
+    float: left;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.background {
+    float: left;
+    font-size: 18px;
+    margin-right: 30px;
+}
+
+.align {
+    float: left;
+    font-size: 18px;
+    margin-left: 100px;
+    margin-right: 50px;
+}
+
+.exp {
+    float: left;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.inspiration {
+    float: left;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.proficiency{
+    float: left;
+    font-size: 18px;
+    margin-right: 50px;
+}
+
+.sheetHeader {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 900px;
+    height: 230px;
+    margin: auto;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+
 }
 
 .statistics {
     color: antiquewhite;
+    background-color: #343232;
+    width: 200px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 280px;
+    float: left;
 }
 
+.statHead {
+    text-align: center;
+}
+.stat {
+    margin-left: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
-.saving_throws {
+.savingThrows {
     color: antiquewhite;
+    float: left;
+    background-color: #343232;
+    width: 200px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 50px;
+
 }
 
+.saveHead {
+    text-align: center;
+}
+.throws {
+    margin-left: 80px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 .battle {
     color: antiquewhite;
-
+    float: left;
+    background-color: #343232;
+    width: 300px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 50px;
 }
 
+.battleHead {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.misc{
+    margin-left: 50px;
+}
 .equipment {
     color: antiquewhite;
+    float: left;
+    background-color: #343232;
+    width: 320px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 50px;
+}
 
+.equipHead {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.equip{
+    margin-left: 50px;
+    margin-bottom: 30px;
 }
 
 .skills {
     color: antiquewhite;
-
+    float: left;
+    background-color: #343232;
+    width: 320px;
+    height: 450px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 280px;
+    margin-bottom: 50px;
 }
 
-.languages_and_other_proficiencies {
+.skillsHead {
+    text-align: center;
+}
+
+.skill {
+    margin-left: 100px;
+}
+
+.langsAndProfs {
     color: antiquewhite;
+    float: left;
+    background-color: #343232;
+    width: 320px;
+    height: 450px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 50px;
+    margin-bottom: 50px;
 
 }
+.lpHead {
+    text-align: center;
+    margin-bottom: 80px;
+}
 
+.lAndP {
+    margin-left: 90px;
+    margin-bottom: 80px;
+}
 .personality {
     color: antiquewhite;
+    float: left;
+    background-color: #343232;
+    width: 435px;
+    height: 450px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 50px;
+    margin-bottom: 50px;
 
 }
 
-.other {
-    color: antiquewhite;
+.pHead {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
+.ps {
+    margin-left: 90px;
+    margin-bottom: 70px;
+}
+.otherFeats {
+    color: antiquewhite;
+    background-color: #343232;
+    float: left;
+    margin-left: 650px;
+    width: 320px;
+    height: 280px;
+    border: 1px solid whitesmoke;
+    margin-bottom: 30px;
+
+}
+
+.otherHead {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feats{
+    margin-left: 60px;
+    margin-bottom: 50px;
+
+}
+
+.sheetHeader1{
+    color: antiquewhite;
+    background-color: #343232;
+    margin-left: 700px;
+    position: center;
+    margin-top: 10px;
+    width: 400px;
+    height: 450px;
+    border: 1px solid whitesmoke;
+
+}
+
+
+.name1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.race1 {
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.class1 {
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.level1 {
+    margin-left: 100px;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.background1 {
+
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.align1 {
+
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+
+}
+
+.exp1 {
+
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.inspiration1 {
+
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.proficiency1 {
+
+    font-size: 18px;
+    margin-left: 100px;
+    margin-bottom: 20px;
+}
+
+.statistics1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 300px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 755px;
+
+}
+
+.statHead1 {
+    text-align: center;
+}
+.stat1 {
+    margin-left: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.savingThrows1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 300px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 755px;
+
+}
+
+.saveHead1 {
+    text-align: center;
+}
+.throws1 {
+    margin-left: 130px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+.battle1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 300px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 755px;
+}
+
+.battleHead1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.misc1{
+    margin-left: 50px;
+}
+.equipment1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 320px;
+    height: 320px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 745px;
+}
+
+.equipHead1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.equip1{
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+
+.skills1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 320px;
+    height: 450px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 745px;
+    margin-bottom: 50px;
+}
+
+.skillsHead1 {
+    text-align: center;
+}
+
+.skill1 {
+    margin-left: 100px;
+}
+
+.langsAndProfs1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 350px;
+    height: 450px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 730px;
+    margin-bottom: 50px;
+
+}
+.lpHead1 {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.lAndP1 {
+    margin-left: 90px;
+    margin-bottom: 80px;
+}
+.personality1 {
+    color: antiquewhite;
+    background-color: #343232;
+    width: 435px;
+    height: 450px;
+    margin-top: 30px;
+    border: 1px solid whitesmoke;
+    margin-left: 688px;
+    margin-bottom: 50px;
+
+}
+
+.pHead1 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.ps1 {
+    margin-left: 90px;
+    margin-bottom: 70px;
+}
+.otherFeats1 {
+    color: antiquewhite;
+    background-color: #343232;
+    margin-left: 750px;
+    width: 320px;
+    height: 280px;
+    border: 1px solid whitesmoke;
+    margin-bottom: 30px;
+
+}
+
+.otherHead1 {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.feats1 {
+    margin-left: 60px;
+    margin-bottom: 50px;
 }

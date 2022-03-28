@@ -5,13 +5,14 @@
 .formsHead{
     font-size: 28px;
     alignment: left;
+    text-align: center;
 }
 
 .formsAndStats{
     padding: 10px;
 }
 .forms  {
-    text-align: center;
+
     background-color: #343232;
     width: 400px;
     height: 500px;
@@ -25,42 +26,51 @@
 .nameWrapper {
     padding: 15px 20px;
     box-sizing: border-box;
+    margin-left: 60px;
 }
 
 .levelWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 }
 .levelForm {
     width: 50px;
+    margin-left: 60px;
 }
 
 .raceWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 
 }
 
 .classWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 
 }
 
 .backgroundWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 
 }
 
 .alignmentWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 
 }
 
 .expWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 
 }
 
 .inspirationWrapper {
     padding: 15px 20px;
+    margin-left: 60px;
 
 }
 
