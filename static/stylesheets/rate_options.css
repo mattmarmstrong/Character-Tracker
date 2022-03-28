@@ -1,0 +1,7 @@
+.body{
+
+	color: antiquewhite;
+	background-color: rgba(0, 0, 0, 0.6);
+	display: grid;
+	font-size: 25px;
+}
