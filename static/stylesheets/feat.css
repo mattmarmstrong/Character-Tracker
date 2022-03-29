@@ -13,6 +13,8 @@
 
 	text-align: start;
 
+	width: 100%;
+
 }
 
 .feat-title{
@@ -21,3 +23,9 @@
 
 }
 
+pre{
+
+	white-space: pre-line;
+	overflow-wrap:break-word;
+
+}
