@@ -208,6 +208,11 @@ def delete_sheet(request, pk):
 
 @login_required(login_url='/login')
 def rate(request, pk):
+    """
+    Rate a feat on user confirmation
+    :param request: object to pass state to the function
+    :return: url to redirect the user to
+    """
     feat = Feat.objects.get(id=pk)
     user = request.user
 
@@ -216,10 +221,10 @@ def rate(request, pk):
     if request.method == 'POST':
         form = RateForm(request.POST)
         if form.is_valid():
-            rate = form.save(commit=False)
+            rate = form.save(commit=False) # if valid form, set feat and user automatically
             rate.user = user
             rate.feat = feat
-            alreadyRated = Rating.objects.filter(user=user).filter(feat=feat)
+            alreadyRated = Rating.objects.filter(user=user).filter(feat=feat) # if a previous rating exists delete it (updated to this rating)
             if alreadyRated:
                 alreadyRated.delete()
             rate.save()
