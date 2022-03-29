@@ -41,6 +41,7 @@ base:	location of the templates and forms that make the website
 		run and function properly
 
 base\templatetags:	Folder for dev defined tags and filters
+
 ------------------------------------------------------
 
 Files
