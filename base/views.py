@@ -71,12 +71,17 @@ def logout_user(request):
 
 @login_required(login_url='/login')
 def user_profile(request):
+
+    # get the current user filtering string
     q = request.GET.get('q') if request.GET.get('q') is not None else ''
 
+    # split the user entered string 'q' to seperate the keyword
+    # from the searched field
     search = q.split(";")
     sheets = Sheet.objects.filter(name__icontains=q)
     found = ''
 
+    # search through the selected field for the keyword
     if ";" in q:
         if "name" in search[0]:
             sheets = Sheet.objects.filter(name__icontains=search[1].strip())
@@ -88,6 +93,8 @@ def user_profile(request):
         elif "date" in search[0]:
             sheets = Sheet.objects.filter(created__icontains=search[1].strip())
 
+    # if no sheet objects contain the searched keyword in the
+    # selected field print an error message
     if not sheets.exists():
         if ";" in q:
             found = f"{search[0].capitalize()}: {search[1]} was not found!"
